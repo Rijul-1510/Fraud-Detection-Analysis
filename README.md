@@ -90,6 +90,7 @@ cd repo
     <img width="858" height="168" alt="Screenshot 2025-09-02 020055" src="https://github.com/user-attachments/assets/22b1d3c9-344c-49ed-aac0-ec04f5fc8ad5" />
 
 CONCLUSION 
+
 Random Forest emerges as the most balanced performer, offering exceptionally high precision and recall with minimal trade-offs. However, LightGBM stands out as the most practical choice for production deployment due to its zero false positives, scalability, and ability to deliver a seamless customer experience. While it misses slightly more fraud cases than Random Forest, this trade-off can be mitigated through threshold tuning or ensemble techniques. Overall, LightGBM is the recommended model for a production-ready fraud detection system, with Random Forest serving as a strong alternative or a complementary model in an ensemble setup.
 
 # RESULT AND PERFORMANCE 
