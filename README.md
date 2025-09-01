@@ -24,12 +24,14 @@ This project demonstrates how data exploration, feature engineering, and machine
 <img width="954" height="480" alt="diagram-export-9-2-2025-1_32_21-AM" src="https://github.com/user-attachments/assets/e42296b7-26be-4ff2-bba1-081415d4b6a3" />
 
 # USAGE 
+```bash
 git clone <repo-url>
 cd repo
-
+```
 # DATA INSIGHTS 
 
 1. FRAUD VS NON-FRAUD TRANSACTION PER TYPE
+
    Fraud is concentrated in TRANSFER and CASH_OUT transactions.
    PAYMENT and CASH_IN transactions rarely exhibit fraud.
    This aligns with real-world fraud patterns: fraudsters often transfer or cash out stolen money rather than paying bills.
@@ -38,13 +40,15 @@ cd repo
 
 
 2. FRAUD RATIO CHART
-   Fraud accounts for only ~0.13% of all transactions — a highly imbalanced dataset.
+
+    Fraud accounts for only ~0.13% of all transactions — a highly imbalanced dataset.
    This imbalance is why naive models (e.g., predicting all as non-fraud) would show very high accuracy but fail in real detection.
    Precision, recall, and AUC are much more important metrics than accuracy for this use case.
 
    <img width="507" height="532" alt="Screenshot 2025-09-02 013645" src="https://github.com/user-attachments/assets/090f3fca-b4ff-497d-a42a-86da513c3149" />
 
 3. TRANSACTION AMOUNT DISTRIBUTION
+
    Fraudulent transactions tend to occur at higher transaction amounts compared to non-fraud.
    After log transformation, fraud shows a distinct distribution peak at higher ranges.
    This suggests transaction amount is a strong predictor of fraud.
@@ -54,6 +58,7 @@ cd repo
 # MODEL APPLIED
 
 1. LOGISTIC REGRESSION
+
     Strengths:
      - Very high recall (0.9830), meaning it detects almost all fraud cases.
      - Reliable baseline model with strong ROC-AUC (0.9777) and PR-AUC (0.9540).
@@ -62,7 +67,8 @@ cd repo
      - In production, this would create significant customer friction (legitimate transactions frequently flagged as fraud).
        
 2. RANDOM FOREST
-   Strengths:
+
+    Strengths:
     - Excellent balance of precision (0.9994) and recall (0.9957).
     - Very few false positives (1) and false negatives (7).
     - Near-perfect F1 (0.9976) and AUC scores (ROC-AUC: 0.9998, PR-AUC: 0.9996).
@@ -71,6 +77,7 @@ cd repo
     - While highly accurate, it still produces a small number of false alarms compared to LightGBM. 
 
 3. LIGHTGBM
+
    Strengths:
     - Achieves perfect precision (1.0) with zero false positives, ensuring no legitimate transaction is wrongly flagged.
     - High recall (0.9872), catching the vast majority of fraud cases (1622 out of 1643).
